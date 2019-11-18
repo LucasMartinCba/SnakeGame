@@ -3,7 +3,8 @@ import random
 import pygame
 import tkinter as tk
 from tkinter import messagebox
-
+pygame.init()
+pygame.display.set_caption("Snake Game")
 
 class cubo(object):
     filas = 20
