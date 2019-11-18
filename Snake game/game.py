@@ -1,5 +1,3 @@
-# Snake Tutorial Python
-
 import math
 import random
 import pygame
@@ -11,7 +9,7 @@ class cubo(object):
     filas = 20
     a = 500
 
-    def __init__(self, start, dirx=1, diry=0, color=(255, 0, 0)):
+    def __init__(self, start, dirx=1, diry=0, color=(255,255,255)):
         self.pos = start
         self.dirx = 1
         self.diry = 0
@@ -136,13 +134,13 @@ def dibujarGrid(w, rows, surface):
         x = x + tamanio
         y = y + tamanio
 
-        pygame.draw.line(surface, (255, 255, 255), (x, 0), (x, w))
-        pygame.draw.line(surface, (255, 255, 255), (0, y), (w, y))
+        pygame.draw.line(surface, (0, 0, 0), (x, 0), (x, w))
+        pygame.draw.line(surface, (0, 0, 0), (0, y), (w, y))
 
 
 def reDibujarVentana(sup):
     global filas, ancho, s, snack
-    sup.fill((0, 0, 0))
+    sup.fill((0, 100, 0))
     s.dibujar(sup)
     snack.dibujar(sup)
     dibujarGrid(ancho, filas, sup)
@@ -179,8 +177,8 @@ def main():
     ancho = 500
     filas = 20
     win = pygame.display.set_mode((ancho, ancho))
-    s = snake((255, 0, 0), (10, 10))
-    snack = cubo(randomComida(filas, s), color=(0, 255, 0))
+    s = snake((255, 255, 255), (10, 10))
+    snack = cubo(randomComida(filas, s), color= (255, 255, 0))
     flag = True
 
     clock = pygame.time.Clock()
@@ -191,7 +189,7 @@ def main():
         s.mover()
         if s.cuerpo[0].pos == snack.pos:
             s.addCubo()
-            snack = cubo(randomComida(filas, s), color=(0, 255, 0))
+            snack = cubo(randomComida(filas, s), color= (255, 255, 0))
 
         for x in range(len(s.cuerpo)):
             if s.cuerpo[x].pos in list(map(lambda z: z.pos, s.cuerpo[x + 1:])):
